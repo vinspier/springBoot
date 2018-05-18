@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html" charset="UTF-8"/>
+    <title>示例 首页</title>
+    <link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <script th:src="@{bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{bootstrap/js/jquery-3.2.1.min.js}"></script>
+    <script th:inline="javascript">
+        function printName(name) {
+            console.log(name);
+        }
+    </script>
+</head>
+<body>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">访问实体类domain</h3>
+    </div>
+    <div class="panel-body">
+        <span th:text="${singlePerson.name}"></span>
+    </div>
+</div>
+
+<div th:if="${not #lists.isEmpty(personList)}">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">列表</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item" th:each="p:${personList}">
+                <span th:text="${p.name}"></span>
+                <span th:text="${p.age}"></span>
+                <button class="btn" th:onclick="'printName(\''+${p.name}+'\');'">点击console输出名字</button>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
