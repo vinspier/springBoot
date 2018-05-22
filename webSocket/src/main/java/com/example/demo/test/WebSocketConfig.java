@@ -14,7 +14,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         //广播式配置一个/topic消息代理
-       // registry.enableSimpleBroker("/topic");
+        registry.enableSimpleBroker("/topic");
         registry.enableSimpleBroker("/queue","/topic"); // 点对点 增加一个消息代理 /queue
     }
 

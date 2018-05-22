@@ -28,7 +28,7 @@ public class WebSocketSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/login").permitAll() //  对/和/login路径不进行拦截
+                .antMatchers("/","/login","/webSocket").permitAll() //  对/和/login路径不进行拦截
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
