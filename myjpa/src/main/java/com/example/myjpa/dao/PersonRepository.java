@@ -10,7 +10,6 @@ import java.util.List;
 public interface PersonRepository extends JpaRepository<Person,Long> {
 
     List<Person> findByName(String name);//使用方法名查询
-
     Person findByNameAndAddress(String name,String address);//使用方法名查询
     Person withNameAndAddressNamedQuery(String name,String address);//使用NamedQuery查询 具体定义在实体类中
 
