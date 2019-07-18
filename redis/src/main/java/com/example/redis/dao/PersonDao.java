@@ -17,6 +17,8 @@ public class PersonDao {
     StringRedisTemplate stringRedisTemplate;
     @Resource(name = "stringRedisTemplate")
     ValueOperations<String,String> valOpsStr;
+
+
     @Autowired
     RedisTemplate<Object,Object> redisTemplate;
     @Resource(name = "redisTemplate")
@@ -28,6 +30,10 @@ public class PersonDao {
 
     public void save(Person person){
         valOps.set(person.getId(),person);
+    }
+
+    public void delete(String id){
+        redisTemplate.opsForHash().delete(id,"name");
     }
 
     public String getString(){
